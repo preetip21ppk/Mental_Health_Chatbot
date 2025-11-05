@@ -1,0 +1,280 @@
+You: hey
+Bot: Hi there. How are you feeling today?
+
+
+You: i am sad
+Bot: How long have you been feeling this way?
+
+
+You: for a long time
+Bot: Happy to help!
+
+
+You: i wish i was better than them
+Bot: life is never about being better than anyone else, it's always about being better than yourself, if you have the guts to be better than yourself, you are automatically the best person to ever exist!
+
+
+You: i want to be alone
+Bot: I'm very sorry to hear that but you have so much to look forward to. Please seek help by contacting the helpline number: Dial 104 or 9152987821.
+
+
+You: i am feeling lonely
+Bot: Why do you think you feel this way?
+
+
+You: i hate it
+Bot: when god was creating the universe he gave humans the power to think and the contemplate, so that we can understand the world and make it a better place. god did not give you brains to hate yourself, it wuld be wiser to love yourself and show god that you are serving the purpose for which you were sent.
+
+
+You: i hate her
+Bot: first of all i'll annoy you with a common saying, "failures are stepping stones to success." and then i'll tell you, winning just boosts your ego, it is your failures that actually teach you.
+
+
+You: Hi
+Bot: Hi there. How are you feeling today?
+
+
+You: I am feeling loneyl
+Bot: Sorry, I didn't understand.
+
+
+You: I am feeling lonely
+Bot: I'm sorry to hear that. I'm here for you. Talking about it might help. So, tell me why do you think you're feeling this way?
+
+
+You: i hate her
+Bot: first of all i'll annoy you with a common saying, "failures are stepping stones to success." and then i'll tell you, winning just boosts your ego, it is your failures that actually teach you.
+
+
+You: i wish i was better than them
+Bot: life is never about being better than anyone else, it's always about being better than yourself, if you have the guts to be better than yourself, you are automatically the best person to ever exist!
+
+
+You: i hate it 
+Bot: when god was creating the universe he gave humans the power to think and the contemplate, so that we can understand the world and make it a better place. god did not give you brains to hate yourself, it wuld be wiser to love yourself and show god that you are serving the purpose for which you were sent.
+
+
+You: hey
+Bot: Hello there. Tell me how are you feeling today?
+
+
+You: i want to hAVE SEX
+Bot: I'm very sorry to hear that but you have so much to look forward to. Please seek help by contacting the helpline number: Dial 104 or 9152987821.
+
+
+You: i have depression
+Bot: It helps to talk about what's happening. You're going to be okay
+
+
+You: i want to be alone
+Bot: I'm very sorry to hear that but you have so much to look forward to. Please seek help by contacting the helpline number: Dial 104 or 9152987821.
+
+
+You: my mom died
+Bot: I'm sorry to hear that. If you want to talk about it. I'm here.
+
+
+You: i wish i was better than them
+Bot: life is never about being better than anyone else, it's always about being better than yourself, if you have the guts to be better than yourself, you are automatically the best person to ever exist!
+
+
+You: i hate her
+Bot: first of all i'll annoy you with a common saying, "failures are stepping stones to success." and then i'll tell you, winning just boosts your ego, it is your failures that actually teach you.
+
+
+You: i hate it
+Bot: when god was creating the universe he gave humans the power to think and the contemplate, so that we can understand the world and make it a better place. god did not give you brains to hate yourself, it wuld be wiser to love yourself and show god that you are serving the purpose for which you were sent.
+
+
+You: i like that
+Bot: Sorry, I didn't understand.
+
+
+You: i like the fact that she likes me
+Bot: I'm sorry if i have exhibited any sort of behaviour to make you think that.
+
+
+You: not you her
+Bot: You can call me Pandora.
+
+
+You: can i open the pandora's box/
+Bot: Sorry, I didn't understand.
+
+
+You: i want to die
+Bot: I'm very sorry to hear that but you have so much to look forward to. Please seek help by contacting the helpline number: Dial 104 or 9152987821.
+
+
+You: why do people have mental illness
+Bot: Maintaining mental health is crucial to stabilizing constructive behaviors, emotions, and thoughts. Focusing on mental health care can increase productivity, enhance our self-image, and improve relationships.
+
+
+You: who is the nost depressed
+Bot: depression and anxiety disorders are different, but people with depression often experience symptoms similar to those of an anxiety disorder, such as nervousness, irritability, and problems sleeping and concentrating. but each disorder has its own causes and its own emotional and behavioral symptoms.
+
+
+You: which sountry has the most depressed
+Bot: Sorry, I didn't understand.
+
+
+You: which country has the most depressed
+Bot: the most depressed country is afghanistan, where more than one in five people suffer from the disorder. the least depressed is japan, with a diagnosed rate of less than 2.5 percent.
+
+
+You: quit
+Bot: Can you elaborate on that?
+
+
+You: suicide
+Bot: Hello there. Glad to see you're back. What's going on in your world right now?
+
+
+You: happiness
+Bot: Hello there. Glad to see you're back. What's going on in your world right now?
+
+
+You: the world is rotten
+Bot: Sorry, I didn't understand.
+
+
+You: the world should end
+Bot: Sorry, I didn't understand.
+
+
+You: die
+Bot: I'm listening. Please go on.
+
+
+You: go on no move on
+Bot: Let's discuss further why you're feeling this way.
+
+
+You: she left me
+Bot: I'm sorry to hear that. I'm doing my best to help
+
+
+You: i hate her
+Bot: first of all i'll annoy you with a common saying, "failures are stepping stones to success." and then i'll tell you, winning just boosts your ego, it is your failures that actually teach you.
+
+
+You: hey
+Bot: Hi there. How are you feeling today?
+
+
+You: hey
+Bot: Great to see you. How do you feel currently?
+
+
+You: i am sad
+Bot: I'm sorry to hear that. I'm here for you. Talking about it might help. So, tell me why do you think you're feeling this way?
+
+
+You: i wish i was better than them
+Bot: life is never about being better than anyone else, it's always about being better than yourself, if you have the guts to be better than yourself, you are automatically the best person to ever exist!
+
+
+You: i hate her
+Bot: when god was creating the universe he gave humans the power to think and the contemplate, so that we can understand the world and make it a better place. god did not give you brains to hate yourself, it wuld be wiser to love yourself and show god that you are serving the purpose for which you were sent.
+
+
+You: why do people have mental illness/
+Bot: Maintaining mental health is crucial to stabilizing constructive behaviors, emotions, and thoughts. Focusing on mental health care can increase productivity, enhance our self-image, and improve relationships.
+
+
+You: who are the most depressed
+Bot: I'm Pandora!
+
+
+You: which country are the most depressed
+Bot: Sorry, I didn't understand.
+
+
+You: which country is the most depressed
+Bot: there's an anxiety-reducing technique called grounding. there are different versions of this, but an easy one to remember is the 3-3-3 rule. mentally note three things you see, three sounds you hear, and then move three parts of your body. this exercise can help your mind refocus on something else.
+
+
+You: hey
+Bot: Great to see you. How do you feel currently?
+
+
+You: i am sad
+Bot: I'm here for you. Could you tell me why you're feeling this way?
+
+
+You: depression
+Bot: A mental health disorder characterised by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.
+
+
+You: i am depressed
+Bot: For a diagnosis of depression, a person needs to have experienced low mood or loss of interest or pleasure in life for at least 2 weeks. Also, they will have experienced the following symptoms: feelings of sadness, hopelessness, or irritability nearly every day.
+
+
+You: most depressed country
+Bot: Sorry, I didn't understand.
+
+
+You: which is the most depressed country
+Bot: there's an anxiety-reducing technique called grounding. there are different versions of this, but an easy one to remember is the 3-3-3 rule. mentally note three things you see, three sounds you hear, and then move three parts of your body. this exercise can help your mind refocus on something else.
+
+
+You: i am sad
+Bot: I'm here for you. Could you tell me why you're feeling this way?
+
+
+You: i wish i was better than them
+Bot: life is never about being better than anyone else, it's always about being better than yourself, if you have the guts to be better than yourself, you are automatically the best person to ever exist!
+
+
+You: i am feeling stressed
+Bot: my research says that music is the best way to calm yourself.so visit the link and listen to your favourite music.it will definitely cheer you up "https://www.spotify.com"
+
+
+You: hey
+Bot: Hi there. What brings you here today?
+
+
+You: i am feeling lonely
+Bot: Why do you think you feel this way?
+
+
+You: she left me
+Bot: Tell me your problem so that i can assist you
+
+
+You: i hate her
+Bot: when god was creating the universe he gave humans the power to think and the contemplate, so that we can understand the world and make it a better place. god did not give you brains to hate yourself, it wuld be wiser to love yourself and show god that you are serving the purpose for which you were sent.
+
+
+You: i wish i was better than them
+Bot: life is never about being better than anyone else, it's always about being better than yourself, if you have the guts to be better than yourself, you are automatically the best person to ever exist!
+
+
+You: life is boring
+Bot: Great to see you. How do you feel currently?
+
+
+You: depressed
+Bot: Sometimes when we are depressed, it is hard to care about anything. It can be hard to do the simplest of things. Give yourself time to heal.
+
+
+You: hey
+Bot: Hello there. Tell me how are you feeling today?
+
+
+You: what is depression
+Bot: Depression is a common and serious medical illness that negatively affects how you feel, the way you think and how you act.fortunately,it is also treatable.depression causes feelings of sadness and/or a loss of interest in activities you once enjoyed. it can lead to a variety of emotional and physical problems and can decrease your ability to function at work and at home.
+
+
+You: what is football
+Bot: Hello there. Tell me how are you feeling today?
+
+
+You: what is sadness
+Bot: Hello there. Glad to see you're back. What's going on in your world right now?
+
+
+You: what is feeling sad
+Bot: Therapy is a form of treatment that aims to help resolve mental or emotional issues.
+
+

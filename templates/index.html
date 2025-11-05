@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAAC Mental Health Chatbot</title>
+    <style>
+        /* Global styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #a7d3ff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(167, 82, 82, 0.1);
+        }
+
+        /* Main content styling */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px #fff;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .content {
+            flex: 0 0 calc(70% - 20px);
+        }
+
+        h1, h2 {
+            color: #1665d3;
+            text-align: center;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Image gallery styling */
+        .image-gallery {
+            flex: 0 0 calc(30% - 20px);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px #cbced1, -5px -5px 10px #fff;
+        }
+
+        /* Quote styling */
+        .quote {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-style: italic;
+            box-shadow: inset 5px 5px 10px #cbced1, inset -5px -5px 10px #fff;
+            text-align: center;
+        }
+
+        /* Chatbot button styling */
+        #chat-button {
+            background-color: #60afff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 5px 5px 10px #cbced1, -5px -5px 10px #fff;
+        }
+
+        #chat-button:hover {
+            background-color: #34495e;
+            box-shadow: inset 5px 5px 10px #cbced1, inset -5px -5px 10px #fff;
+        }
+
+        /* Chatbot pop-up styling */
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px #fff;
+            z-index: 9999;
+        }
+        .chat-header, .chat-body {
+            padding: 10px;
+            background-color: #fdf0d5;
+            color: #333;
+        }
+
+        .chat-body {
+            min-height: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .chat-message .message-content {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 20px;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .bot-message .message-content {
+            background-color: #e5e5ea;
+            color: #333;
+            margin-left: 10px; /* Reduced gap */
+        }
+
+        .bot-message .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ff8484;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-message .message-content {
+            background-color: #0084ff;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .user-message .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #0084ff;
+            margin-left: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .chat-input {
+            padding: 10px;
+            border-top: 1px solid #ffaaa5;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-input input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ffaaa5;
+        }
+
+        .chat-input button {
+            width: 80px;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff8484;
+            color: #fff;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .chat-input button:hover {
+            background-color: #ffaaa5;
+        }
+
+        /* Voice button styling */
+        #voice-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #voice-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SAAC Mental Health Chatbot</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>What is Mental Health?</h2>
+            <p>Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make choices. Mental health is important at every stage of life, from childhood and adolescence through adulthood.</p>
+
+            <h2>Mental Health Facts</h2>
+            <ul>
+                <li>Mental health is essential to overall health and well-being.</li>
+                <li>Mental illnesses are common, but help is available, and most people with mental illnesses recover.</li>
+                <li>Mental health disorders affect an estimated 26% of American adults each year.</li>
+                <li>Many factors contribute to mental health problems, including biological factors, such as genes or brain chemistry, and life experiences, such as trauma or abuse.</li>
+                <li>Mental health problems are not a sign of weakness and are treatable.</li>
+            </ul>
+
+            <button id="chat-button">Chat with our Bot</button>
+        </div>
+
+        <div class="image-gallery">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRgSEhIZGBgaGBgaGRgVHBgZGRoaGhoZGRoZGBgcIS4lHB4rIRgZJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QGhISHjEhJCE0NDQ0NDQ0NDQ0NDE0NDE0NDQxNDQxNDQxMTE0NDE0MTQ0NDQ0MTQ0NDQ0ND80NDQ/NP/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAEAAEDBQYCBwj/xABAEAACAQIEAggDBQcDBAMBAAABAgADEQQSITEFQQYTUWFxgZGxIjKhFEJSwdEHFWJykuHwI7LxRFOCwkNUojP/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACERAQEAAgIBBQEBAAAAAAAAAAABAhEDURQSEyExQQRC/9oADAMBAAIRAxEAPwDYIskCxkWSgSKjK7eMOxQ0EGC6jxhmLGghEVMaQ/h3zeRgaDSG4D5vKILWKKKUKKKKAo0eNAUUUUBooooCldxMaSxgHERpAqHXSTUl0jMuklpjSRR2AENgeChsqGiiigKKKKApzOooHMadzmENGaPE0op8ePiHhAMSukscaPiHh+cCxI0mKBqQ0EadKIpFdoJIBGQSRRNBguohWKG0iRdRJ8SNoVGg0huB+aCoNIXgvm8ogsooopUKKKD4zFLTQu+w+p7BAnvGvMu/TCnTYLVWwIBDL2HuO9tR5TQ4bErUUPTYMp2Ik2aERRgYzGUPFOEMkgKA48aQvrBe1xcbi+o8RIMXa2pA8dJBXMmkdV0hJTSc5NIVLgxDYJhRC5UKNHjQGJjiK0eA1op1OSICnMRiEIUZo8ZpRWYwfEPCBYgaQ7Fj4hBK40mKoNRFO7RSDpZMokKydJodoNZPiRtIaQ+KT4gbQrhBpC8GNYMXCi7EAdpg78YRflIv2n9N4RoYpkavFS+mdj3KzJfuBGh87QZ8Oj3IqVkbnerVH/sNY2um1ZgBcmw75h+PcTLtl3Fza22+/pM7xhMXQ+NcS9Sny63/AFAO45rgeO3feBcM4m1QOtSwZbMttip0NgOxv9wmbVkSccOemrfhbK3cr3t5BgP65F0R6QVcNUCqGdHNjTW7G/8ACB94SXG0Vqq1MtkFQFCw1yk/K1ri9mynymn4Jweng6TtTJZ8jFqjWLsQvIDRRpsPrG/hdb+G3oVldQ42I5gg+BB1B7pIZkOC8cIsGDEMTod7doH5TSYvHBEzAZibZVGhN/HaMc8bNmXHljdJMRiFpqXdrKOfsAOZldiukNNVzAE32XY/2lXj8c1UBWtob/D8oO1gfvbnX0HOVjrc3I0G055ct/HbDhn+hLVkJY6LnYsw3Y33zHc9wOg5WlVxnitiqsGdjpTRbs2ltuwDS7HbnOza5I3POMrtYlmuB6Thcnpxxn2jw2JxGmeotMHZUBcjxfMBfwBHeYZjulgw6f6lYbaFgrOx7AgGs8z490wqOzU8PZVBIzjVmA5jkAe2ZepXdiWZizHcsST6k3nbDDL9unDk5MPybe08H/ahTJy4miya/MmtgToWW/sTPQsBxCnWUVKLq6nmp9xyny2mIYDfyO01PQrpC+HrKytpezKdip3H9/Cdt6ebUr6GjSHBYlaiLUQ3VhcESaaZckxwY9orQHiiigctGAnRigKctOpy0IrsWNRBKw0huKGogtUaTNUHaKdWjyDgSRWnAE6AmlFYVDe5kmOqhBmPp2nsEei4AuxsALknkJgOnPHnZclM2vt/KNz4n2kpC430kJYhGudrjYdy8vOZyvxNyeR8dfcSlTieXSoLd/L1hKVlbUG48ZFWuHxpGu197Ej0G01HDuJEgfHcdp38+7vH0mJ6swnB1yjXzEf5tpCt+WFsw1Vt1OoN99JjukHDjhai42ldqQNqiEklVbRtTuvsQOW17w7FqRv8J+h8+UNqopUo4DIwIYHYgybGbxVPKAUN0YZkPaDqJrOE4rrKYPMqVPjsZl6OHSiowjVMwBbqi2+UEEIT+IAgd+h52BfRzElHame4jx2PjyhXWHxjgbkSRcewOQH59D5a2lfVqZHdOx2t4E3H0InWGroHzN90EjxOn6zw6sr373F6GIA5Tog7c5T1ccSbjyF9hD+HuG1uD4frNbSYpHTt9ZmennExRw3VobM5CXHJd2PdoLecteN8WSjcsdBMPxau1anWquL3yoi30Cq4bP3TeH3NplN42TpnDhbC9tOUHqLbWXKG6IB+G3cbaflK3ELYnX8p6pXiyxCJUtt/b0huExNiLC3eP0MrWOsmp1OX1mmZXs/7N+l66YOq1tbIb6AnZbHUa989Tny1wfGFaqVBurKVvsSDzHbpvPp7CVg6I42dVbt+YA7+cQvaePOAJ0JWTxR4oHJjXjtORA6geK4giVKVFic9UuEAF75Fztc8hb3EKvMwzdbxYDcYbCMT3VMQ6gD+ikf6pYLrFDUQWqNIZiRqINVGkzQFFOrR5lXIWPadqI2JqBEao2ygn9BNCh6R8UsRQU9hf3A9p53x8s9U2vYAAW8JZ4vFl6hcnc6ygxeLbO1jb4j7zP6qD7M+x18bRDA5dUOU917ehki1XPPSTqzcz6wqOjjWTSoDb8Q1H9pZIwYXFj6X/KBHXlfu/wCBOFQoc1M27Ubn4HlAvuH4kobHY+cvxUYLfcd+kyGFxaubG6ON1a9/Q+80XD8UNjtsd9uW/YfeQUnHcYi4lFdAylkexvoQGAIt6ecPGKy1la+/wmZ/p6uWpTcbDn3Kwb2YzrGYnVWv+E+xglGdIcUUrZgdHUHzHwn6BZZ9H8JnTrnb5rhR3KTr639JkuO4kvkC6tmygdpbQD1tN/gaISklNSCEULdb3JG5v43mLhLfl19dk1DVOHWvlOp7db+lpHh6j0r3UWAvcHT9R5wqmTf+3vOa417/APNZLxY/hjzZT7+Xn2OrGu7VKjCwY5Rflew+kHx3ELoaY+UC/dea/iHR6lUuyDq33ugGU95TbzFvOYXpBg3oMEqLa9yGBurAaXB/wyzGbW8m5RWAUNTtfa5t57jsMDx6c9/eWnDcOwQA3228ezsMqceL3BBH0/4lxvzUymsYp33M6v2fUe04Yj6zkueU6uA6jVGi7G+hvb3uL859P9E62fB4Z7WvRT6KBfztefLtGmDcnYWNx2Dn7es+pujOF6rC0Kd75aSajYki5t5mBZ2jiKKVDxoooDGKPGgM5sLzLdD1z1+IYk/fxXVA92HRUNu7OXmlxVUKpdtlBY+CgsfaUPQGiVwFF2+aqGrv/NWZqh/3D0lFxidxBag0hWI5QaptMgW0U6imVMsznTfiGRFpA6v8R8AbD639JZ8N4xSqrmVxoLnuEwXSHifX1Wba2ig/hvp/nfLSKZ6utxIbhvm013M4qA3nDpmFtpFTHCkarr4RZ+R37JAuEcao5HnOg9bm4I7wD7wopHHbCEyH5h6bwJKj21Wn5qB7CdriE++F8rj2MCTH0xb4abN2HMLj+U/ltIcFxMj/AE2JBsdxY+Y7YZhqifcpvb+EufYxsbw1aoBNOorDUP8AKR4ZoAvSgnEYYVF1anq3ehFj6Eg+F5UCtmpof4B+kMwdRqLmjU108mQ9o+kBr4fJZAdBmyn+EklfofoYQqYapWpU0F2LqfAL8RPkAT5T0F06qz0xlHMa2mM6EYVq1dqpcL1Yso/EzAj6C/qJvab7o7A+F9PGKRJ1ocCrT8HG1u+SuodcwNj+cDofA+U/I+hk1E5Wamez27JFRio2x3+hlJ0ram2Hdai3PwhORWo2i29de68scfV6qm75hlVHZSeRAJAPnaeatxFn6mnUcsFYuzEkm5Jygk9g1/8AIyyfp+6asaoANx2dkgGCV9GF7zqi9uclGKA0HrPL8z6e/Uv2zfSLhqoAyADtmbmh6UVmZlt8tvrAeCcJfE1FpU1LMxAAAvv+lp6uPfp+Xi5teq6aX9m3AvtOKRHS6Ah3JBIyIb5Tpb4iAPCfSAmY6DdF1wFDqzY1HYs7DbuVSRsB9bzT3m3I8Ua8V4DxorxXgKKK8V4Gc6e1yuBrhfmdBRW2+auy0hb+oy9w1AIiU12RFUeCgAe0znSo562Bw348UKhH8OHpvV/3ZJqLygXEcoNV2hWIgtTaYqhMwigVWpqYpn1Lp4x0TxzlXJJsq5Qe0vcW9AfpDcT8WouCNQYJwujQSn1YxQzElmzKVFyALA63Gm8mqUH+46MO5gZqo56wNodG9+8RlGnfr5wTEOwPxob9o5TuhVzC19e0f5pIogVmXTb2nX2pj9wHyjJUvo2/bJTTtsIUyVyd6a+Yv7w2gr8rD+VQPS0HReyFYdv895ATTRju59YdQQgfNp36wSj/AJaH038PeQVPG+FCquZQA66o3I9qnuNvaZatUzBSRYrdWB3Fv0N56I6X56zHdJcCyuWpqWLq4ZUBJLBSQwA7h9JqVKI6LcJKp1uQsWOYC5QKLDL3lrAHzmqUirowy1B22+K3fOOEswpor02AyjUi2UkDST1k1sdG3Vu/xktVFWBdOeZfXz7Y+fN1dQb7Hy5GTA3s/M6MO8bwbBrdKiW1R7jzgZnpvXNkwqb1XGt7AWIAv4kj0mZ4vwavST7TUo5adTL1bqQyMLaEMpPIDQ2Os9Oq4LDPVSpiwAoFr7H4gAVBGovfcayu6eomGrI2FSn1NWiAaarZDlJHxBSLkgje+qkzUqMpggzIoAJNhtvtLBOHFfjrulNeWdrE/wAqgEnyBgVTjIyfAjJUGgK5WQrtrfUMPMHnKyo7O2Z2LMbfExufU8pz9Hz8ut5fjUbTD4GhiHoYSkhPWuwas1lfIiksVTUIu2m5vqeU9F6N9D8LgTnooWfbO5BYAixC6WWYPoTh2bGo4JC0qIbYn/8AoSMpPK+W/lPTHxcmWeOF1akwyy+ViapjdcZW/a4xxcnv49r7OXSz64xdcZV/bIvtknkY9r7OXS264znrjKs42cnHR5GPZ7GXS264xdcZUHHR0xeYhRzlnPjbqVLw5Sb0Aat1nFVHLD4Nm/8APEVB/wClP6zSHETC8AxQOJ4hiR97ECkp/hw6BNO6+aXb8RjPnxxurTHhyykul09W8grVbCUr8UMBxnEXIsLzF/ow7WcGXRYrFjO3jFKOqXuYpj3se2/ay6YiuFbTKLchbYbCC9UoPwllPKxkj4pdbL5sf0tIXxX8o8gfeet5nTVXG9QH+eQszHULr2ofyInX2lz8in2E5qrUPzuF9bwCMPic+jgqw2vz8P0h1LEW337+YmeemPxsx7tPS0NwuLv8NTQ8m/XvgX6EHUGS02t+sq0rHYixhKVjsdo0q2o1P+bywoPewsJSU6l4fhqg3BmRbs9hp2b9kqmrMldDlLswY5b2yUxue8kkafpD0fNpcW0v7wWhis7sVYDLUKkNpmXIBYHtB/OBaNZlDrUJU9utjzB7JGKhHwsL9hgyVQjkfcc2Ycr8jJHa3kfQcjAIp7N32bz2vI8APiq+V/UTug1yf5f7zjAuFFSodtCfBQWPtKM50h4wq4gpcWSw1XN8Whaw/pHkZScZ4s2IYEsCAqpYIUAykkEKf5jAMZXZ3didWZmPixJPvB6WpYD/AAzaJO6HYTDZ0ZR8ygsPAbwLcd4l90ZUG5I128jpA9B/ZxhM1J6v3nyL/wCNNB+bNNe2BPbKjoRSCUkQbDP9WmrnHLhxzu7G8eXLGaip/d57ZyeHHtlxGmfG4+mvIz7VH7tPbOTw0/ilzGjxuPo8jPtT/u1u2c/uxvxS6ivHi8fS+Rn2pf3W34pHWpdQrVnOiK7HwRS5/wBsvbzLftFrlcDWVfmdBSUdrVnSmPoXlx/l48bMpPpMufOzV/Vb0I4U5wNKox+KoGqt3mo7Nf0Il2/CG/FLjBYcU6aU1GiIiDwVQv5SYmMv5uPK22fZjz54zUZxuDt2yN+DN2zSkzgmZ8Ti6PJzZn9yN2xTSZ4pfE4+jyc3zg+MpD5KZbxP5CR/bW+7SVfL9Z0EA+WSKmms9DigNWo2haw7BEuHG7E+MlaoOWs6p02f/iZVwtIchOa1G/KWGQDSRtAFSvl+F9uR5iHJVsLE3HIyvrLflIaNZkPavZ+nYYF/TqmGYfEbSlo1gRdTp7eMISraFaTDYjYCAYZgBmfQEnN3HMRf/OyRYPEa7ybEvvk1sM4HaQblT4hiPOQHqraodR/msKRiya7jTxsNDK3B1gQqg6EXTy3Q949vCHYdrMVPMaQCsLU+EHy9YNj3y4dwN3Zv6Rv/ALbecVBjlZf4h5b/ANpa4bhzVFZ7aKpRe9vvH8pYPI6wtc8yec5wK2YqZc9IcIVr2tbS/wCUr3Sz2Ol1+omkNiUsbiX3R8BhnQ/EpGZe0HmJRO4O/n4y66MIUrI33W0MlHsnRhLL4A/Uy+zSo4BRIpkjmfpLJkYcpUS5os0GLxusgEXjZoP1sY1Y2Cc0WaDCrH6yNoIzTG9LnFTE4LC3+fFB2HamGpmob92Zx6TUGpMm5z8X/hw+FJ8Kldzf/wDIjY2ZeRmrKzFYyw0ME4bxHO6gnnG100DgiRtePiq4B35Qc19L3mmVNxDimWoy32t7CKYTi2MLVqjX+8fpp+UUxtrTEmso0UTm7HeRIBLPDYQj4n07ucqucNhb6nbthTOFFhoPqY1SsNuXv4d0DL31MyJS94mN9ZCrXMlYaQIm139ZE1O8mvOl8IArAr8u8ko4rkR+h/STGnfT1MixNMIIB1Gtre8No1RdfGx8CLTMUa7Akk/CAT6dkOwXEV0ud9bHeXRtf00+anexDZkPYwP+fWWSVsyhjow37j3Ssw9TOyrTN2a3rrNInR+sx+4L73bumbYukvBsG1Z8lPckHuFuZ7tbz0vCcNSmi012Uc9yeZPeTrM90Swi4ZGNRlLsQPh1so2F+839BLhuIkm4cAdmnvLLIl2wn7ROjrB0rU1JQmzkD5Tyv3TznjuFZcjWsQSp9wfOe2YjCpUsHxNUgXBXrHCsD+JQQG85U1OiOBa1yTZswLMCT3MTqR3S+qGnidNwxFzYHS/YewzXdHAEYIzCxIsbibwdEMAM2nzEHcXXuQ2+EabQul0fwatnAUG1vu28QLaN3xuGmr4TTApJqNrw3KJmaVFFUKuIYBTp8Q9CTv5yeyG4+0tY/wAe3geUbiaXpprIHwimVS0EsB1xtsRcWPltHNJLWNcmx0u17frLuGlkcEvbHXBqJXLkvcVTe34vY8p0uUb1Ce3Xfxk3AecKkb7OvdPD+mvTPH0MdWpUsS6IrLkUKh0KqdCyk6kkyswvTLitW/U1q7kb5KVN7eOVJpHvuKVERnylsqs1hlGwvuxAHmQJmOheHWvVx2MZSBUxAppmFiUpIiqR3EkzB4DE8UrtT67r3OY5krp1VMrqFJOUAFb5tjfv0nr/AArDrRprTVr2uSTzJNz5fpIqV+HUzugg68HpIbogB7ocak463vl0jNca4W7Nn6x0HcR+YlXXouiOTXcgKdyvZ4Ta4l1YWYAjvlXi+HYd1KsgsRY2NvaEeI1cXqdY83lXodgrnVv64pnTW3ntHCZRf73K/Kdl7mzDz/52+vjOOssLnaDPiryiaoZGFLaAXjYYguAdRPQuFcJpZQ1pkYzCcIrPskMXgFe3yz0OlhlGgsIQmGl0beZno5XP3ZMvRut2a9s9MTCSZcEI0m3midG6wFgBFS6GVXP+o+Ud289RXBidjCiX0m3n1PoNRtlYFu25OvpJ6XQjD6XpKfHWbsYYR/s4jRtksL0VoI6ulNVZTcEDUS6bBsf/AJPpLQUBOuqmbhL9tTLSnPD2/wC59I37vb8f0luac5KSe3D1Vlcf0fr1HzJiCg7IJV6L4of9Wfr+s29JY2JE16Ym6wDdHsT/APZMdejeJP8A1JmwdY9MRpds2OhOIqoEOMdRe/wjWdp+zGpz4hV9Fm6wB0lkssibrM4fou6oEOIZrC1yonLdER/3m9BNXFJcZSWsxhuiuRg3WsbciBLZOGjmxljFExkN1SYjoxhHY1KmFpO53d0RmNtNSRLDCYNKSCnTRUQbKgCqPIQuKaQK+EB3v6mQNgVvrc+ZlhI2gQJRA2H1MTIJJGaAPVQQN0WGVTAKrRQDUwiXMUkLxSGnz/iqp2G0HD9kaKAVgW+MTf8AC67BRYxRTOSxcJjmEKp8S7YopFGUuJwynxGKKJaWCFx4nYxgiim9suxixHGJEUUB/tAi+0CKKFcmuJyawiigPRrC8bFVRFFKK9qkSVYopBccNqgy3RoooiOw0e8UUoe8V4ooDXivFFAYtI2aKKBwGnLNFFCBa7ytrVRFFJVBmsIooplX/9k=" alt="Mental Health Image 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEwtJGf5JhzbuD4XUjh3OzYjOwJE56Zdp6nw&usqp=CAU" alt="Mental Health Image 2">
+            <!-- <img src="https://via.placeholder.com/300x200.png?text=Image+3" alt="Mental Health Image 3">
+            <img src="https://via.placeholder.com/300x200.png?text=Image+4" alt="Mental Health Image 4"> -->
+        </div>
+
+        <div class="quote" id="quote-container"></div>
+    </div>
+
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Chat with our Bot</h3>
+            <button id="close-button">&#10006;</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- Chat messages will be appended here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+            <button id="voice-button">Speak</button>
+        </div>
+    </div>
+
+    <script>
+        const quotes = [
+            '"Mental health is not just the absence of mental illness, but a state of well-being in which every individual realizes their own potential, can cope with the normal stresses of life, can work productively and fruitfully, and is able to make a contribution to their community." - World Health Organization',
+            '"You don\'t have to control your thoughts. You just have to stop letting them control you." - Dan Millman',
+            '"There is hope, even when your brain tells you there isn\'t." - John Green',
+            '"The greatest weapon against stress is our ability to choose one thought over another." - William James',
+            '"Mental health needs a great deal of attention. It\'s the final taboo and it needs to be faced and dealt with." - Adam Ant'
+        ];
+
+        // Chatbot pop-up functionality
+        var chatPopup = document.getElementById("chat-popup");
+        var chatButton = document.getElementById("chat-button");
+        var closeButton = document.getElementById("close-button");
+        var userName = "";
+
+        function displayRandomQuote() {
+            const quoteContainer = document.getElementById('quote-container');
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+            quoteContainer.innerHTML = `<i class="fas fa-quote-left"></i> ${quote} <i class="fas fa-quote-right"></i>`;
+        }
+
+        chatButton.onclick = function() {
+            chatPopup.style.display = "block";
+            getUserName();
+        }
+
+        closeButton.onclick = function() {
+            chatPopup.style.display = "none";
+        }
+
+        // Add event listener for the voice button
+        document.getElementById("voice-button").addEventListener("click", startVoiceRecognition);
+        function startVoiceRecognition() {
+   // Initialize the recognizer
+   var recognizer = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+           
+   // Start recognition
+   recognizer.start();
+
+   // Process recognition result
+   recognizer.onresult = function(event) {
+       var result = event.results[0][0].transcript;
+       appendMessage(result, false, userName ? userName.charAt(0).toUpperCase() : "");
+       // Send the recognized text to the server
+       fetchResponse(result);
+   }
+
+   // Handle errors
+   recognizer.onerror = function(event) {
+       console.error("Recognition error:", event.error);
+   }
+}
+
+// Chatbot functionality
+document.getElementById("send-button").addEventListener("click", sendMessage);
+
+function sendMessage() {
+   var userInput = document.getElementById("user-input").value;
+   if (userInput.trim() === "") return;
+
+   appendMessage(userInput, false, userName ? userName.charAt(0).toUpperCase() : "");
+   document.getElementById("user-input").value = "";
+
+   fetchResponse(userInput);
+}
+
+function fetchResponse(userInput) {
+   fetch("/chatbot", {
+       method: "POST",
+       headers: {
+           "Content-Type": "application/json"
+       },
+       body: JSON.stringify({ "message": userInput })
+   })
+   .then(response => response.json())
+   .then(data => {
+       appendMessage(data.response, true);
+   })
+   .catch(error => {
+       console.error('Error:', error);
+   });
+}
+
+function appendMessage(message, isBotMessage, userInitial = "") {
+   var messageElement = document.createElement("div");
+   messageElement.classList.add("chat-message", isBotMessage ? "bot-message" : "user-message");
+
+   var messageContent = document.createElement("div");
+   messageContent.classList.add("message-content");
+   messageContent.textContent = isBotMessage ? "Bot: " + message : message;
+
+   if (isBotMessage) {
+       var avatar = document.createElement("div");
+       avatar.classList.add("avatar");
+       avatar.textContent = "B"; // You can replace this with an image or icon
+       messageElement.appendChild(avatar);
+   } else if (userInitial) {
+       var avatar = document.createElement("div");
+       avatar.classList.add("avatar");
+       avatar.textContent = userInitial;
+       messageElement.appendChild(avatar);
+   }
+
+   messageElement.appendChild(messageContent);
+
+   var chatBody = document.getElementById("chat-body");
+   chatBody.appendChild(messageElement);
+   chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
+
+   if (isBotMessage) {
+       convertToSpeech(message);
+   }
+}
+
+function convertToSpeech(text) {
+   var speech = new SpeechSynthesisUtterance();
+   speech.text = text;
+   window.speechSynthesis.speak(speech);
+}
+
+function getUserName() {
+   var userNamePrompt = prompt("Please enter your name:", "");
+   if (userNamePrompt) {
+       userName = userNamePrompt;
+       appendMessage("Hi " + userName + ", I'm SAAC! How can I assist you today?", true);
+   } else {
+       appendMessage("Hi there, I'm SAAC! How can I assist you today?", true);
+   }
+}
+    displayRandomQuote();
+</script>
+</body>
+</html>
